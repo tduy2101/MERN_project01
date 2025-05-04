@@ -1,0 +1,113 @@
+npm init -y
+npm i express mongoose dotenv
+npm i nodemon -D
+
+Công cụ	            Vai trò chính
+-------------------------------------------------------------------------------------------
+MongoDB	            Cơ sở dữ liệu dùng để lưu dữ liệu backend (NoSQL, dạng document).
+MongoDB Atlas	    Dịch vụ cloud lưu trữ MongoDB (không cần cài đặt local MongoDB).	
+Mongoose	        Thư viện giúp Node.js thao tác MongoDB dễ dàng hơn: tạo schema, model,...	
+MongoDB Compass	    Giao diện trực quan để xem, chỉnh sửa dữ liệu (GUI).	
+
+
+[Frontend React]  <->  [Express + Node.js]  <->  [Mongoose]  <->  [MongoDB (trên Atlas)]
+                                                                  |
+                                                                  +-> (Dùng Compass để xem trực quan nếu cần
+
+Create a cluster copy URI để kết nối tới server qua mongoose (cả mật khẩu)
+Định nghĩa models
+Tạo api CRUD (chia thành routes và controller)
+
+npm create vite@latest .
+
+=============================================================================================
+Deploy
+
+✅ 1. Deploy chung frontend + backend
+    🔧 Mô hình:
+    React (Vite) được build (npm run build) → file tĩnh (/dist)
+
+    Express server phục vụ cả API và frontend
+
+    🔽 Hosting:
+    Render.com (dễ dùng, miễn phí cơ bản)
+
+    VPS (DigitalOcean, Linode, EC2) + NGINX
+
+    Railway, Cyclic, Heroku (giới hạn gói free)
+
+    ✅ Ưu điểm:
+    1 server duy nhất, đơn giản
+
+    Không cần cấu hình CORS
+
+    npm install cross-env --save-dev
+
+
+✅ 2. Deploy tách biệt frontend & backend
+    🔧 Mô hình:
+    Frontend: deploy lên Vercel / Netlify (chỉ file tĩnh React)
+
+    Backend: deploy Express API riêng (Render, VPS…)
+
+    🔽 Hosting:
+    FE: Vercel, Netlify, Surge
+
+    BE: Render, Heroku, VPS
+
+    ⚠️ Lưu ý:
+    Cần cấu hình CORS
+
+    FE gọi API qua domain riêng: https://api.example.com
+
+    ✅ Ưu điểm:
+    Dễ scale, độc lập frontend/backend
+
+    Tối ưu cho CI/CD riêng mỗi phần
+
+✅ 3. Deploy containerized (Docker)
+    🔧 Mô hình:
+    Dockerize frontend, backend
+
+    Dùng Docker Compose hoặc Kubernetes để quản lý
+
+    🔽 Hosting:
+    VPS (Ubuntu + Docker)
+
+    AWS ECS, GCP, Azure (nâng cao)
+
+    ✅ Ưu điểm:
+    Quản lý tốt, dễ di chuyển giữa môi trường
+
+    Phù hợp với team lớn / production
+
+✅ 4. Deploy bằng Serverless (chỉ backend)
+    🔧 Mô hình:
+    FE: Netlify / Vercel
+
+    BE: AWS Lambda / Vercel serverless functions
+
+    ✅ Ưu điểm:
+    Không cần duy trì backend server
+
+    Giảm chi phí cho ứng dụng nhỏ
+
+    ⚠️ Hạn chế:
+    Backend phải viết theo chuẩn serverless (như Next.js API Routes)
+
+
+# Development
+npm run dev
+
+# Production
+npm run build
+npm run start
+
+Express 5.0.0 sử dụng router 2.0.0, vốn dùng thư viện path-to-regexp phiên bản 8.0.0, và điều này mang lại một số thay đổi phá vỡ (breaking changes) trong cách xử lý đường dẫn.
+Lỗi bạn gặp phải là do bạn đã sử dụng ký tự : hoặc * trong một đường dẫn mà không đi kèm với tên tham số. Trong Express 5, ký tự đại diện * có ý nghĩa khác so với phiên bản 4.x. Ở phiên bản 4.x, * sẽ khớp với bất kỳ thứ gì, nhưng ở phiên bản 5.0, nó được xử lý giống như : và yêu cầu một tên tham số đi kèm.
+Bạn nên kiểm tra lại tất cả các đường dẫn (paths), đặc biệt là những cái có chứa các ký tự :, *, ?, và +, để đảm bảo rằng chúng tương thích với các thay đổi mới này.
+Bạn có thể tìm thêm thông tin chi tiết trong changelog và liên kết được hiển thị trong thông báo lỗi.
+
+Thao tác vs git
+git init
+

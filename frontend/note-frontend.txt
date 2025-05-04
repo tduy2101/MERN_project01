@@ -1,0 +1,34 @@
+npm create vite@latest .
+npm install
+npm install react@18.3.1 react-dom@18.3.1 --force
+npm uninstall react react-dom
+npm install react@18.3.1 react-dom@18.3.1
+
+Dự án Vite mới tạo thường dùng React 19, nhưng để đảm bảo tương thích, hãy hạ xuống React 18:
+npm install react@18.3.1 react-dom@18.3.1
+
+Cài đặt các phiên bản cụ thể để tránh xung đột:
+npm install @chakra-ui/icons@2.1.1 @chakra-ui/react@2.8.2 @emotion/react@11.13.0 @emotion/styled@11.13.0 framer-motion@11.3.17
+SNext",
+
+Chạy dự án
+npm run dev
+
+Kiểm tra phiên bản
+npm list react react-dom @chakra-ui/react @emotion/react @emotion/styled framer-motion
+
+Tóm tắt phiên bản được khuyến nghị (ổn định nhất)
+react@18.3.1
+react-dom@18.3.1
+@chakra-ui/react@2.8.2
+@emotion/react@11.13.0
+@emotion/styled@11.13.0
+framer-motion@11.3.17
+
+npm i react-router-dom : để quản lý điều hướng (routing) trong ứng dụng React chạy trên trình duyệt.
+import { BrowserRouter } from 'react-router-dom'; // Thêm BrowserRouter
+
+npm install react-icons
+npm i @chakra-ui/icons
+
+npm i zustand
