@@ -111,3 +111,9 @@ Bạn có thể tìm thêm thông tin chi tiết trong changelog và liên kết
 Thao tác vs git
 git init
 
+git add .
+git commit -m ""
+
+git remote add origin https://github.com/tduy2101/MERN_project01.git
+git branch -M master
+git push -u origin master
